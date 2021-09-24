@@ -1,6 +1,9 @@
 import random
 import math
 from itertools import groupby
+'''
+TODO: QUE NO EMPIEZEN SIEMPRE POR 0
+'''
 # Datos de entrada del problema
 # ASUMIMOS QUE EL NODO A ES LA OFICINA DE CORREOS
 aristas = {
