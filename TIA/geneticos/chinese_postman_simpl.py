@@ -6,25 +6,15 @@ from itertools import groupby
 aristas = {
     0: ["A", "B", 1],
     1: ["B", "C", 2],
-    2: ["B", "D", 3],
-    3: ["B", "E", 5],
-    4: ["B", "H", 1],
-    5: ["C", "D", 1],
-    6: ["C", "F", 2],
-    7: ["C", "H", 3],
-    8: ["D", "G", 5],
-    9: ["D", "H", 1],
-    10: ["H", "G", 1],
-    11: ["G", "F", 2],
-    12: ["F", "C", 3],
-    13: ["F", "E", 5],
-    14: ["E", "A", 1],
+    2: ["C", "D", 3],
+    3: ["D", "A", 5],
+    4: ["B", "A", 6]
 }
 
 # Definir variables
 population_n = 100
 torneo_n = 2
-threshold = 12
+threshold = 11
 max_iterations = 1000
 calles = list(aristas.keys())
 min_length_sol = len(calles)
@@ -156,15 +146,15 @@ iteration = 0
 while not condicion_parada(fitness, threshold, iteration, max_iterations):
     if(iteration % 100) == 0:
         print(iteration)
-    print('ITERATION: ' + str(iteration))
-    print(population)
-    print(fitness)
+    # print('ITERATION: ' + str(iteration))
+    # print(population)
+    # print(fitness)
     winners, fitness_winners = selection(population, fitness, torneo_n)
-    print('SELETION: ' + str(population))
+    # print('SELETION: ' + str(population))
     new_generation = cruzar(winners)
-    print('NEW GENERATION: ' + str(new_generation))
+    # print('NEW GENERATION: ' + str(new_generation))
     mutar(new_generation)
-    print('MUTAR: ' + str(new_generation))
+    # print('MUTAR: ' + str(new_generation))
     new_fitness = []
     for i in new_generation:
         new_fitness.append(evaluate(i))
@@ -175,5 +165,6 @@ while not condicion_parada(fitness, threshold, iteration, max_iterations):
 
     # input("Press Enter to continue...")
 
-
+print(population)
 print('Best solution: ' + str(population[0]))
+print('Fitness: ' + str(fitness[0]))
