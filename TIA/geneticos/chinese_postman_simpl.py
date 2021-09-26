@@ -13,12 +13,27 @@ TODO:
     -Relajar restricciones del problema (no hace falta que visiten todas todas las calles)
 '''
 # Problems data
-edges = {
+'''edges = {
     0: ["A", "B", 1],
     1: ["B", "C", 2],
     2: ["C", "D", 3],
     3: ["D", "A", 5],
     4: ["B", "A", 6]
+}'''
+
+edges = {
+    0: ["A", "B", 1],
+    1: ["B", "A", 2],
+    2: ["B", "D", 3],
+    3: ["D", "B", 5],
+    4: ["D", "C", 1],
+    5: ["C", "D", 5],
+    6: ["C", "A", 3],
+    7: ["A", "C", 1],
+    8: ["A", "D", 1],
+    9: ["D", "A", 3],
+    10: ["C", "B", 2],
+    11: ["B", "C", 6],
 }
 
 initial_streets = []
@@ -37,13 +52,13 @@ for i in edges.keys():
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 100
+population_n = 10
 tournament_n = 2
 threshold = 11
-max_iterations = 1000
+max_iterations = 10
 p_mutation = 0.9
 min_length_sol = len(streets)
-max_length_mult = 1
+max_length_mult = 5
 max_length_sol = max_length_mult * min_length_sol
 
 # Create initial population
@@ -55,30 +70,50 @@ def create_pseudorandom_population():
         k = random.randint(min_length_sol, max_length_sol)
         initial_node = random.choice(initial_streets)
         individual = [initial_node]
-        i = 1
+        ind_len = 1
         available_perm = streets[1:]
-        while i < k:
-            n_elem = k - i if i + len(available_perm) > k else len(available_perm)
+        while ind_len < k:
+            n_elem = k - ind_len if ind_len + len(available_perm) > k else len(available_perm)
             individual.extend(random.sample(available_perm, n_elem))
-            i += n_elem
+            ind_len += n_elem
             available_perm = list(edges.keys())
             available_perm.remove(individual[-1])
         population.append(individual)
     return population
 
 
-def create_population_heuristics():
-    for i in range(population_n):
-        k = random.randint(min_length_sol, max_length_sol)
-        initial_street = random.choice(initial_streets)
-        individual = [initial_street]
-        non_visited_streets = set(streets).difference([initial_street])
-        print(non_visited_streets)
-        print(connection_dict)
-        next_street_posib = connection_dict[initial_street]
-        # QUEDARTE CON AQUELLA CUYA LISTA EN CONNECTIONS SEA MENOR
+def create_super_individual():
+    initial_street = random.choice(initial_streets)
+    individual = [initial_street]
+    non_visited_streets = set(streets).difference([initial_street])
+    ind_len = 1
+    most_connected = initial_street
+    while ind_len < max_length_sol:
+        next_street_posib = connection_dict[most_connected]
         most_connected = None
-        len(i) for i in next_street_posib
+        max_connections = -math.inf
+        # Find out which one is the most connected edge
+        for street in next_street_posib:
+            if street in non_visited_streets and len(connection_dict[street]) > max_connections:
+                most_connected = street
+                max_connections = len(connection_dict[most_connected])
+
+        # For this iteration we have visited all the posibilities
+        if most_connected is None:
+            most_connected = random.choice(next_street_posib)
+        # Probabilities
+        '''leftover = 0.5 / (len(next_street_posib) - 1)
+        p = [leftover] * len(next_street_posib)
+        p[next_street_posib.index(most_connected)] = 0.5
+        most_connected = random.choices(next_street_posib, k=1, weights=p)[0]'''
+        # If all the streets have been visited and we are in node A
+        if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
+            break
+
+        individual.append(most_connected)
+        non_visited_streets = non_visited_streets.difference([most_connected])
+        ind_len += 1
+    return individual
 
 
 # Fitness function
@@ -101,7 +136,6 @@ def factible(individual):
     for i in range(len(individual) - 1):
         if edges[individual[i]][1] != edges[individual[i + 1]][0]:
             secuencia = False
-
     return secuencia and len(set(individual)) == len(streets)
 
 
@@ -173,23 +207,20 @@ def replacement(population, fitness, population_n):
 
 # Stop condition
 def stop_condition(fitness, threshold, iteration, max_iterations):
-    if fitness[0] <= threshold or iteration > max_iterations:
+    if fitness[0] <= threshold or iteration >= max_iterations:
         return True
     else:
         return False
 
 
-#   population = create_pseudorandom_population()
-population = create_population_heuristics()
-'''
+population = create_pseudorandom_population()
+population.append(create_super_individual())
 fitness = []
 for i in population:
     fitness.append(evaluate(i))
 
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
-    if(iteration % 100) == 0:
-        print(iteration)
     # print('ITERATION: ' + str(iteration))
     # print(population)
     # print(fitness)
@@ -209,7 +240,7 @@ while not stop_condition(fitness, threshold, iteration, max_iterations):
 
     # input("Press Enter to continue...")
 
-print(population)
 print('Best solution: ' + str(population[0]))
+print('Iteration:' + str(iteration))
 print('Fitness: ' + str(fitness[0]))
-'''
+print(fitness)
