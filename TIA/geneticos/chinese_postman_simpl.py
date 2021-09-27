@@ -21,7 +21,7 @@ TODO:
     4: ["B", "A", 6]
 }'''
 
-edges = {
+'''edges = {
     0: ["A", "B", 1],
     1: ["B", "A", 2],
     2: ["B", "D", 3],
@@ -34,6 +34,35 @@ edges = {
     9: ["D", "A", 3],
     10: ["C", "B", 2],
     11: ["B", "C", 6],
+}'''
+
+edges = {
+    0: ["A", "B", 1],
+    1: ["B", "A", 2],
+    2: ["A", "C", 3],
+    3: ["C", "A", 4],
+    4: ["A", "D", 5],
+    5: ["D", "A", 6],
+    6: ["C", "D", 7],
+    7: ["D", "C", 8],
+    8: ["A", "E", 9],
+    9: ["E", "A", 10],
+    10: ["D", "E", 12],
+    11: ["E", "D", 13],
+    12: ["E", "B", 14],
+    13: ["B", "E", 15],
+    14: ["C", "F", 20],
+    15: ["F", "C", 10],
+    16: ["C", "F", 2],
+    17: ["F", "C", 1],
+    18: ["D", "F", 5],
+    19: ["F", "D", 10],
+    20: ["E", "F", 5],
+    21: ["F", "E", 1],
+    22: ["F", "G", 0],
+    23: ["G", "F", 56],
+    24: ["B", "G", 1],
+    25: ["G", "B", 14],
 }
 
 initial_streets = []
@@ -52,10 +81,11 @@ for i in edges.keys():
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 10
+population_n = 100
 tournament_n = 2
-threshold = 11
-max_iterations = 10
+threshold = sum([i[2] for i in edges.values()])
+print('EUCLIDEAN PATH WOULD COST: ' + str(threshold))
+max_iterations = 1
 p_mutation = 0.9
 min_length_sol = len(streets)
 max_length_mult = 5
@@ -101,11 +131,6 @@ def create_super_individual():
         # For this iteration we have visited all the posibilities
         if most_connected is None:
             most_connected = random.choice(next_street_posib)
-        # Probabilities
-        '''leftover = 0.5 / (len(next_street_posib) - 1)
-        p = [leftover] * len(next_street_posib)
-        p[next_street_posib.index(most_connected)] = 0.5
-        most_connected = random.choices(next_street_posib, k=1, weights=p)[0]'''
         # If all the streets have been visited and we are in node A
         if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
             break
@@ -114,6 +139,30 @@ def create_super_individual():
         non_visited_streets = non_visited_streets.difference([most_connected])
         ind_len += 1
     return individual
+
+
+def create_heuristics_population():
+    population = []
+    while (len(population) < population_n):
+        initial_street = random.choice(initial_streets)
+        individual = [initial_street]
+        non_visited_streets = set(streets).difference([initial_street])
+        ind_len = 1
+        actual_street = initial_street
+        while ind_len < max_length_sol:
+            if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
+                break
+            next_street_posib = connection_dict[actual_street]
+            next_street_non_visited = list(filter(lambda x: (x in non_visited_streets), next_street_posib))
+            if next_street_non_visited == []:
+                actual_street = random.choice(next_street_posib)
+            else:
+                actual_street = random.choice(next_street_non_visited)
+            individual.append(actual_street)
+            non_visited_streets = non_visited_streets.difference([actual_street])
+            ind_len += 1
+        population.append(individual)
+    return population
 
 
 # Fitness function
@@ -157,18 +206,21 @@ def selection(population, fitness, tournament_size):
 # Cross individuals to get next generation
 def cross(winner_population):
     new_generation = []
-    for _ in range(int(len(winner_population) / 2)):
+    individual_n = 0
+    while (individual_n < int(len(winner_population) / 2)):
         father = random.choice(winner_population)
         mother = random.choice(winner_population)
-        common_edges = list(set(father) & set(mother))
-        if common_edges != []:
-            winner = random.choice(common_edges)
-            father_idx = father.index(winner)
-            mother_idx = mother.index(winner)
-            son_1 = father[0:father_idx] + mother[mother_idx:]
-            son_2 = mother[0:mother_idx] + father[father_idx:]
-            new_generation.append(son_1)
-            new_generation.append(son_2)
+        if father != mother:
+            common_edges = list(set(father) & set(mother))
+            if common_edges != []:
+                winner = random.choice(common_edges)
+                father_idx = father.index(winner)
+                mother_idx = mother.index(winner)
+                son_1 = father[0:father_idx] + mother[mother_idx:]
+                son_2 = mother[0:mother_idx] + father[father_idx:]
+                new_generation.append(son_1)
+                new_generation.append(son_2)
+            individual_n += 1
     return new_generation
 
 
@@ -213,7 +265,7 @@ def stop_condition(fitness, threshold, iteration, max_iterations):
         return False
 
 
-population = create_pseudorandom_population()
+population = create_heuristics_population()
 population.append(create_super_individual())
 fitness = []
 for i in population:
@@ -243,4 +295,6 @@ while not stop_condition(fitness, threshold, iteration, max_iterations):
 print('Best solution: ' + str(population[0]))
 print('Iteration:' + str(iteration))
 print('Fitness: ' + str(fitness[0]))
-print(fitness)
+print(fitness[0:10])
+print('*************')
+print(population[0:10])
