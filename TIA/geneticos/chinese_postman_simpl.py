@@ -1,69 +1,29 @@
 import random
 import math
 from itertools import groupby
+import json
 '''
 Implementation of the Chinese postman problem with genetic algorithms
 ASUMPTION: POSTAMN'S OFFICE IS NODE A
 COSAS A TENER EN CUENTA:
     - la longitud del individuo solo es la inicial, porque con el cruce ya no sabes nada
     - la mutacion ayuda a encontrar el individuo ideal en menos iteraciones en este ejemplo
-TODO:
-    -Mirar que pasa cuando la talla del torneo es mayor ( no nos podemos quedar sin población)
-    -Heuristica para la población inicial
-    -Relajar restricciones del problema (no hace falta que visiten todas todas las calles)
+    - Heuristica para la población inicial
+    - Relajar restricciones del problema ( no hace falta que visiten todas las calles)
 '''
-# Problems data
-'''edges = {
-    0: ["A", "B", 1],
-    1: ["B", "C", 2],
-    2: ["C", "D", 3],
-    3: ["D", "A", 5],
-    4: ["B", "A", 6]
-}'''
+# PROBLEM DATA LOADING
 
-'''edges = {
-    0: ["A", "B", 1],
-    1: ["B", "A", 2],
-    2: ["B", "D", 3],
-    3: ["D", "B", 5],
-    4: ["D", "C", 1],
-    5: ["C", "D", 5],
-    6: ["C", "A", 3],
-    7: ["A", "C", 1],
-    8: ["A", "D", 1],
-    9: ["D", "A", 3],
-    10: ["C", "B", 2],
-    11: ["B", "C", 6],
-}'''
 
-edges = {
-    0: ["A", "B", 1],
-    1: ["B", "A", 2],
-    2: ["A", "C", 3],
-    3: ["C", "A", 4],
-    4: ["A", "D", 5],
-    5: ["D", "A", 6],
-    6: ["C", "D", 7],
-    7: ["D", "C", 8],
-    8: ["A", "E", 9],
-    9: ["E", "A", 10],
-    10: ["D", "E", 12],
-    11: ["E", "D", 13],
-    12: ["E", "B", 14],
-    13: ["B", "E", 15],
-    14: ["C", "F", 20],
-    15: ["F", "C", 10],
-    16: ["C", "F", 2],
-    17: ["F", "C", 1],
-    18: ["D", "F", 5],
-    19: ["F", "D", 10],
-    20: ["E", "F", 5],
-    21: ["F", "E", 1],
-    22: ["F", "G", 0],
-    23: ["G", "F", 56],
-    24: ["B", "G", 1],
-    25: ["G", "B", 14],
-}
+def jsonKeys2int(x):
+    if isinstance(x, dict):
+        return {int(k): v for k, v in x.items()}
+    return x
+
+
+with open('3_edges_sink.json', 'r') as r:
+    aux = dict(json.load(r))
+    edges = jsonKeys2int(aux)
+
 
 initial_streets = []
 connection_dict = {}
@@ -81,11 +41,10 @@ for i in edges.keys():
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 100
+population_n = 1000
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
-print('EUCLIDEAN PATH WOULD COST: ' + str(threshold))
-max_iterations = 1
+max_iterations = 100
 p_mutation = 0.9
 min_length_sol = len(streets)
 max_length_mult = 5
@@ -120,6 +79,9 @@ def create_super_individual():
     most_connected = initial_street
     while ind_len < max_length_sol:
         next_street_posib = connection_dict[most_connected]
+        # Node with no way posible
+        if next_street_posib == []:
+            break
         most_connected = None
         max_connections = -math.inf
         # Find out which one is the most connected edge
@@ -153,6 +115,9 @@ def create_heuristics_population():
             if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
                 break
             next_street_posib = connection_dict[actual_street]
+            # Node with no way posible
+            if next_street_posib == []:
+                break
             next_street_non_visited = list(filter(lambda x: (x in non_visited_streets), next_street_posib))
             if next_street_non_visited == []:
                 actual_street = random.choice(next_street_posib)
@@ -177,6 +142,10 @@ def evaluate(individual):
 
 
 def factible(individual):
+    return correct_path(individual) and len(set(individual)) == len(streets)
+
+
+def correct_path(individual):
     secuencia = True
     if edges[individual[0]][0] != 'A':
         secuencia = False
@@ -185,7 +154,7 @@ def factible(individual):
     for i in range(len(individual) - 1):
         if edges[individual[i]][1] != edges[individual[i + 1]][0]:
             secuencia = False
-    return secuencia and len(set(individual)) == len(streets)
+    return secuencia
 
 
 # Select parent individuals: by tournament
@@ -265,11 +234,37 @@ def stop_condition(fitness, threshold, iteration, max_iterations):
         return False
 
 
+# Print found solution
+def print_solution(population, fitness, iteration):
+    print('****************************************')
+    print('Sum of all edges(optimal): ' + str(threshold))
+    if fitness[0] != math.inf:
+        print("Best solution: " + str(population[0]))
+        print('Fitness: ' + str(fitness[0]))
+    # there is no factible individual
+    else:
+        fitness_non_factible = [math.inf] * len(population)
+        for i in range(len(population)):
+            individual = population[i]
+            if correct_path(individual):
+                fitness_non_factible[i] = len(set(individual)) - len(streets)
+        min_value = min(fitness_non_factible)
+        if min_value == math.inf:
+            print('NO SOLUTION FOUND')
+        else:
+            min_index = fitness_non_factible.index(min_value)
+            print("Best non factible solution: " + str(population[min_index]))
+            print('Fitness: ' + str(fitness_non_factible[min_index]))
+    print('Iteration:' + str(iteration))
+
+
 population = create_heuristics_population()
 population.append(create_super_individual())
+
 fitness = []
 for i in population:
     fitness.append(evaluate(i))
+
 
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
@@ -291,10 +286,4 @@ while not stop_condition(fitness, threshold, iteration, max_iterations):
     iteration += 1
 
     # input("Press Enter to continue...")
-
-print('Best solution: ' + str(population[0]))
-print('Iteration:' + str(iteration))
-print('Fitness: ' + str(fitness[0]))
-print(fitness[0:10])
-print('*************')
-print(population[0:10])
+print_solution(population, fitness, iteration)
