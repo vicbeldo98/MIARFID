@@ -20,7 +20,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('3_edges_sink.json', 'r') as r:
+with open('16901_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
@@ -41,13 +41,13 @@ for i in edges.keys():
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 1000
+population_n = 100
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 100
+max_iterations = 1000
 p_mutation = 0.9
 min_length_sol = len(streets)
-max_length_mult = 5
+max_length_mult = 1
 max_length_sol = max_length_mult * min_length_sol
 
 # Create initial population
@@ -268,6 +268,8 @@ for i in population:
 
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
+    if (iteration % 100) == 0:
+        print(iteration)
     # print('ITERATION: ' + str(iteration))
     # print(population)
     # print(fitness)
