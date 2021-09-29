@@ -7,9 +7,9 @@ Implementation of the Chinese postman problem with genetic algorithms
 ASUMPTION: POSTAMN'S OFFICE IS NODE A
 COSAS A TENER EN CUENTA:
     - la longitud del individuo solo es la inicial, porque con el cruce ya no sabes nada
-    - la mutacion ayuda a encontrar el individuo ideal en menos iteraciones en este ejemplo
+    - intentar arreglarlos ayuda a encontrar el individuo ideal en menos iteraciones en este ejemplo
     - Heuristica para la población inicial
-    - Relajar restricciones del problema ( no hace falta que visiten todas las calles)
+    - Relajar restricciones del problema (no hace falta que visiten todas las calles)
 '''
 # PROBLEM DATA LOADING
 
@@ -20,7 +20,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('418_edges.json', 'r') as r:
+with open('graphs/16901_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
@@ -41,11 +41,11 @@ for i in edges.keys():
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 15
+population_n = 100
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 10
-p_mutation = 0.9
+max_iterations = 1000
+p_mutation = 0.05
 min_length_sol = len(streets)
 max_length_mult = 2
 max_length_sol = max_length_mult * min_length_sol
@@ -131,14 +131,17 @@ def create_heuristics_population():
 
 
 # Fitness function
-def evaluate(individual):
-    if not factible(individual):
-        return math.inf
-    else:
-        dist = 0
-        for i in range(len(individual)):
-            dist += edges[individual[i]][2]
-        return dist
+def evaluate(population):
+    fitness = []
+    for individual in population:
+        if not factible(individual):
+            fitness.append(math.inf)
+        else:
+            dist = 0
+            for i in range(len(individual)):
+                dist += edges[individual[i]][2]
+            fitness.append(dist)
+    return fitness
 
 
 def factible(individual):
@@ -195,35 +198,42 @@ def cross(winner_population):
 
 # Mutations in the new generation
 def mutate(new_generation):
-    if random.choices([True, False], k=1, weights=[p_mutation, 1 - p_mutation])[0]:
-        for i in range(len(new_generation)):
-            # Passes through all the streets
-            if list(set(new_generation[i])) == streets:
-                # Repeated times
-                if len(new_generation[i]) > len(streets):
-                    prob = [new_generation[i].count(j) / len(new_generation[i]) for j in new_generation[i]]
-                    calle = random.choices(new_generation[i], k=1, weights=prob)[0]
-                    new_generation[i].remove(calle)
-                # Once for every street
-                else:
-                    if(not factible(new_generation[i])):
-                        start = new_generation[i][0]
-                        slice = new_generation[i][1:]
-                        random.shuffle(slice)
-                        new_generation[i] = [start] + slice
-                new_generation[i] = [j[0] for j in groupby(new_generation[i])]
-            # Does not pass though every street
-            else:
-                non_visited = list(set(streets).difference(set(new_generation[i])))
-                calle_aleatoria = random.choice(non_visited)
-                new_generation[i].append(calle_aleatoria)
+    for ind in range(len(new_generation)):
+        if random.choices([True, False], k=1, weights=[p_mutation, 1 - p_mutation])[0]:
+            # Reciprocal Exchange Mutation
+            pos_a = random.randint(0, len(new_generation[ind]) - 1)
+            pos_b = random.randint(0, len(new_generation[ind]) - 1)
+            aux = new_generation[ind][pos_a]
+            new_generation[ind][pos_a] = new_generation[ind][pos_b]
+            new_generation[ind][pos_b] = aux
 
 
 # Choose next generation individuals
-def replacement(population, fitness, population_n):
-    # Me quedo los n mejores
+def replacement(population, population_n):
+    # Try to fix population
+    hospital(population)
+    # Get the best n
+    fitness = evaluate(population)
     s_fitness, s_popu = zip(*sorted(zip(fitness, population)))
     return list(s_popu)[:population_n + 1], list(s_fitness)[:population_n + 1]
+
+
+def hospital(population):
+    for i in range(len(population)):
+        if not factible(population[i]):
+            if correct_path(population[i]):
+                # Does not pass though every street
+                non_visited = list(set(streets).difference(set(population[i])))
+                calle_aleatoria = random.choice(non_visited)
+                population[i].append(calle_aleatoria)
+            else:
+                # Not even a correct path. Random shuffle
+                start = population[i][0]
+                slice = population[i][1:]
+                random.shuffle(slice)
+                population[i] = [start] + slice
+            # Delete repeated consecutive edges
+            population[i] = [j[0] for j in groupby(population[i])]
 
 
 # Stop condition
@@ -258,34 +268,23 @@ def print_solution(population, fitness, iteration):
     print('Iteration:' + str(iteration))
 
 
+# CREATING INITIAL POPULATION
 population = create_heuristics_population()
 population.append(create_super_individual())
 
-fitness = []
-for i in population:
-    fitness.append(evaluate(i))
+fitness = evaluate(population)
 
-
+#  MAIN BUCLE OF THE GENETIC ALGORITHM
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
     if (iteration % 100) == 0:
-        print(iteration)
-    # print('ITERATION: ' + str(iteration))
-    # print(population)
-    # print(fitness)
+        print('ITERARION: ' + str(iteration))
     winners, fitness_winners = selection(population, fitness, tournament_n)
-    # print('SELETION: ' + str(population))
     new_generation = cross(winners)
-    # print('NEW GENERATION: ' + str(new_generation))
     mutate(new_generation)
-    # print('MUTAR: ' + str(new_generation))
-    new_fitness = []
-    for i in new_generation:
-        new_fitness.append(evaluate(i))
-    winners.extend(new_generation)
-    fitness_winners.extend(new_fitness)
-    population, fitness = replacement(winners, fitness_winners, population_n)
+    new_population = winners.copy()
+    new_population.extend(new_generation)
+    population, fitness = replacement(new_population, population_n)
     iteration += 1
 
-    # input("Press Enter to continue...")
 print_solution(population, fitness, iteration)
