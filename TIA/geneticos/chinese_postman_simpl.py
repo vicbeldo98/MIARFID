@@ -20,34 +20,35 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/16901_edges.json', 'r') as r:
+with open('graphs/ejemplo_clase.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
 
 initial_streets = []
-connection_dict = {}
+adjacency = {}
 for i in edges.keys():
-    connection_dict[i] = []
+    adjacency[i] = []
 for i in edges.keys():
     if edges[i][0] == "A":
         initial_streets.append(i)
     dest = edges[i][1]
     for j in edges.keys():
         if edges[j][0] == dest:
-            connection_dict[i].append(j)
+            adjacency[i].append(j)
 
+degree = {k: len(v) for k, v in adjacency.items()}
 
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 100
+population_n = 1
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
 max_iterations = 1000
 p_mutation = 0.05
 min_length_sol = len(streets)
-max_length_mult = 2
+max_length_mult = 1
 max_length_sol = max_length_mult * min_length_sol
 
 # Create initial population
@@ -72,34 +73,39 @@ def create_pseudorandom_population():
 
 
 def create_super_individual():
+    connections = degree.copy()
     initial_street = random.choice(initial_streets)
     individual = [initial_street]
     non_visited_streets = set(streets).difference([initial_street])
     ind_len = 1
     most_connected = initial_street
-    while ind_len < max_length_sol:
-        next_street_posib = connection_dict[most_connected]
+    while ind_len <= max_length_sol:
+        next_street_posib = adjacency[most_connected]
         # Node with no way posible
         if next_street_posib == []:
             break
         most_connected = None
         max_connections = -math.inf
+
         # Find out which one is the most connected edge
         for street in next_street_posib:
-            if street in non_visited_streets and len(connection_dict[street]) > max_connections:
+            if street in non_visited_streets and connections[street] > max_connections:
                 most_connected = street
-                max_connections = len(connection_dict[most_connected])
+                max_connections = connections[street]
 
         # For this iteration we have visited all the posibilities
         if most_connected is None:
             most_connected = random.choice(next_street_posib)
+
         # If all the streets have been visited and we are in node A
         if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
             break
 
         individual.append(most_connected)
+        connections[most_connected] -= 1
         non_visited_streets = non_visited_streets.difference([most_connected])
         ind_len += 1
+
     return individual
 
 
@@ -111,10 +117,10 @@ def create_heuristics_population():
         non_visited_streets = set(streets).difference([initial_street])
         ind_len = 1
         actual_street = initial_street
-        while ind_len < max_length_sol:
+        while ind_len <= max_length_sol:
             if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
                 break
-            next_street_posib = connection_dict[actual_street]
+            next_street_posib = adjacency[actual_street]
             # Node with no way posible
             if next_street_posib == []:
                 break
@@ -272,7 +278,11 @@ def print_solution(population, fitness, iteration):
 population = create_heuristics_population()
 population.append(create_super_individual())
 
+print(population)
+
 fitness = evaluate(population)
+
+print('INDIVIDUAL: ' + str(create_super_individual()))
 
 #  MAIN BUCLE OF THE GENETIC ALGORITHM
 iteration = 0
