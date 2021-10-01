@@ -20,19 +20,25 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/ejemplo_clase.json', 'r') as r:
+with open('graphs/548_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
 
 initial_streets = []
 adjacency = {}
+fathers_of = {}
 for i in edges.keys():
     adjacency[i] = []
+    fathers_of[i] = []
 for i in edges.keys():
-    if edges[i][0] == "A":
-        initial_streets.append(i)
+    origin = edges[i][0]
     dest = edges[i][1]
+    if origin == "A":
+        initial_streets.append(i)
+    for j in edges.keys():
+        if edges[j][1] == origin:
+            fathers_of[i].append(j)
     for j in edges.keys():
         if edges[j][0] == dest:
             adjacency[i].append(j)
@@ -42,13 +48,13 @@ degree = {k: len(v) for k, v in adjacency.items()}
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 1
+population_n = 100
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
 max_iterations = 1000
 p_mutation = 0.05
 min_length_sol = len(streets)
-max_length_mult = 1
+max_length_mult = 2
 max_length_sol = max_length_mult * min_length_sol
 
 # Create initial population
@@ -72,44 +78,51 @@ def create_pseudorandom_population():
     return population
 
 
-def create_super_individual():
-    connections = degree.copy()
-    initial_street = random.choice(initial_streets)
-    individual = [initial_street]
-    non_visited_streets = set(streets).difference([initial_street])
-    ind_len = 1
-    most_connected = initial_street
-    while ind_len <= max_length_sol:
-        next_street_posib = adjacency[most_connected]
-        # Node with no way posible
-        if next_street_posib == []:
-            break
-        most_connected = None
-        max_connections = -math.inf
-
-        # Find out which one is the most connected edge
-        for street in next_street_posib:
-            if street in non_visited_streets and connections[street] > max_connections:
-                most_connected = street
-                max_connections = connections[street]
-
-        # For this iteration we have visited all the posibilities
-        if most_connected is None:
-            most_connected = random.choice(next_street_posib)
-
-        # If all the streets have been visited and we are in node A
-        if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
-            break
-
-        individual.append(most_connected)
-        connections[most_connected] -= 1
-        non_visited_streets = non_visited_streets.difference([most_connected])
-        ind_len += 1
-
-    return individual
-
-
 def create_heuristics_population():
+    population = []
+    while (len(population) < population_n):
+        connections = degree.copy()
+        initial_street = random.choice(initial_streets)
+        individual = [initial_street]
+        non_visited_streets = set(streets).difference([initial_street])
+        ind_len = 1
+        most_connected = initial_street
+        # Find out parents and take 1 to the degree
+        for father in fathers_of[most_connected]:
+            connections[father] -= 1
+        while ind_len <= max_length_sol:
+            next_street_posib = adjacency[most_connected]
+            # Node with no way posible
+            if next_street_posib == []:
+                break
+            most_connected = None
+            max_connections = -math.inf
+
+            # Find out which one is the most connected edge
+            for street in next_street_posib:
+                if street in non_visited_streets and connections[street] > max_connections:
+                    most_connected = street
+                    max_connections = connections[street]
+
+            # For this iteration we have visited all the posibilities
+            if most_connected is None:
+                most_connected = random.choice(next_street_posib)
+
+            # If all the streets have been visited and we are in node A
+            if len(non_visited_streets) == 0 and edges[individual[-1]][1] == "A":
+                break
+
+            individual.append(most_connected)
+            # Find out parents and take 1 to the degree
+            for father in fathers_of[most_connected]:
+                connections[father] -= 1
+            non_visited_streets = non_visited_streets.difference([most_connected])
+            ind_len += 1
+        population.append(individual)
+    return population
+
+
+def create_factible_population():
     population = []
     while (len(population) < population_n):
         initial_street = random.choice(initial_streets)
@@ -276,18 +289,13 @@ def print_solution(population, fitness, iteration):
 
 # CREATING INITIAL POPULATION
 population = create_heuristics_population()
-population.append(create_super_individual())
-
-print(population)
 
 fitness = evaluate(population)
-
-print('INDIVIDUAL: ' + str(create_super_individual()))
 
 #  MAIN BUCLE OF THE GENETIC ALGORITHM
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
-    if (iteration % 100) == 0:
+    if iteration % 100 == 0:
         print('ITERARION: ' + str(iteration))
     winners, fitness_winners = selection(population, fitness, tournament_n)
     new_generation = cross(winners)
