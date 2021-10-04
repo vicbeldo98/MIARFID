@@ -1,0 +1,25 @@
+COTA DE OPTIMIALIDAD : 203714
+
+IMPORTANCIA DE LA POBLACIÓN INICIAL
+    (default 1000 iteraciones, tamaño del torneo 2 y p_mutation = 0.05)
+    CANTIDAD VS CANTIDAD:Población inicial pseudoaleatoria vs heuristica
+    Número de personas inicialmente: calidad solución: solución
+    2 : random : 
+    2 : heurtisca : 283635, 345226, 375606, 377060, 378638, infinito =  376333
+    50 : random :
+    50 : heuristica : 281682 282952 295200 302680 309274 313041 = 298940
+    100 : random :
+    100 : heuristica : 272802 296023 296475 301218 304145 315328 = 298847
+    1000 : random : 
+    1000 : heuristica : 270310 279125 286585 286287 287634 288762 = 286436
+    10000 : random : 
+    10000 : heuristica :
+
+
+Iteracion: distancia
+1: 339.172
+10: 323.102
+100: 319.840
+1000: 318.169 
+10000: 316.079
+50000: 315.546

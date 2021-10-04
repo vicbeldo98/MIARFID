@@ -20,7 +20,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/548_edges.json', 'r') as r:
+with open('graphs/418_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
@@ -48,7 +48,7 @@ degree = {k: len(v) for k, v in adjacency.items()}
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 100
+population_n = 10000
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
 max_iterations = 1000
