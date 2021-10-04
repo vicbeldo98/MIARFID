@@ -287,6 +287,9 @@ def print_solution(population, fitness, iteration):
     print('Iteration:' + str(iteration))
 
 
+import time
+start = time.time()
+
 # CREATING INITIAL POPULATION
 population = create_heuristics_population()
 
@@ -306,3 +309,6 @@ while not stop_condition(fitness, threshold, iteration, max_iterations):
     iteration += 1
 
 print_solution(population, fitness, iteration)
+
+end = time.time()
+print('TIME ' + str(end - start))
