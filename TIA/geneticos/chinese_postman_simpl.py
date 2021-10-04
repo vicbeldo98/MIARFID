@@ -48,10 +48,10 @@ degree = {k: len(v) for k, v in adjacency.items()}
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 10000
-tournament_n = 2
+population_n = 100
+tournament_n = 100
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 1000
+max_iterations = 100
 p_mutation = 0.05
 min_length_sol = len(streets)
 max_length_mult = 2
@@ -137,7 +137,7 @@ def create_factible_population():
             # Node with no way posible
             if next_street_posib == []:
                 break
-            next_street_non_visited = list(filter(lambda x: (x in non_visited_streets), next_street_posib))
+            next_street_non_visited = [x for x in next_street_posib if x in non_visited_streets]
             if next_street_non_visited == []:
                 actual_street = random.choice(next_street_posib)
             else:
