@@ -13,7 +13,7 @@ IMPORTANCIA DE LA POBLACIÓN INICIAL
     1000 : random : 
     1000 : heuristica : 270310 279125 286585 286287 287634 288762 = 286436
     10000 : random : 
-    10000 : heuristica : 273717
+    10000 : heuristica : 273717 264631 = 269174
 
 
 Iteracion: distancia
