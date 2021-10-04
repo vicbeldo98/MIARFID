@@ -49,12 +49,12 @@ streets = list(edges.keys())
 
 # Parameter definition
 population_n = 100
-tournament_n = 100
+tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
 max_iterations = 100
 p_mutation = 0.05
 min_length_sol = len(streets)
-max_length_mult = 2
+max_length_mult = 5
 max_length_sol = max_length_mult * min_length_sol
 
 # Create initial population
