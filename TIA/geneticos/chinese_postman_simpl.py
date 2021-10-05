@@ -22,7 +22,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/418_edges.json', 'r') as r:
+with open('graphs/72_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
