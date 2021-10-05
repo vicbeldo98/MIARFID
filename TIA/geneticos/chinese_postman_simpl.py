@@ -2,6 +2,8 @@ import random
 import math
 from itertools import groupby
 import json
+import time
+
 '''
 Implementation of the Chinese postman problem with genetic algorithms
 ASUMPTION: POSTAMN'S OFFICE IS NODE A
@@ -48,7 +50,7 @@ degree = {k: len(v) for k, v in adjacency.items()}
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 100
+population_n = 10
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
 max_iterations = 100
@@ -287,7 +289,6 @@ def print_solution(population, fitness, iteration):
     print('Iteration:' + str(iteration))
 
 
-import time
 start = time.time()
 
 # CREATING INITIAL POPULATION
