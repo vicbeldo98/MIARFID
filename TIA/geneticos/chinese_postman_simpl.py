@@ -22,7 +22,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/72_edges.json', 'r') as r:
+with open('graphs/418_edges.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
@@ -50,14 +50,13 @@ degree = {k: len(v) for k, v in adjacency.items()}
 streets = list(edges.keys())
 
 # Parameter definition
-population_n = 10
+population_n = 500
 tournament_n = 2
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 100
+max_iterations = 500
 p_mutation = 0.05
 min_length_sol = len(streets)
-max_length_mult = 5
-max_length_sol = max_length_mult * min_length_sol
+max_length_sol = 2 * min_length_sol
 
 # Create initial population
 population = []
@@ -182,38 +181,50 @@ def correct_path(individual):
 
 
 # Select parent individuals: by tournament
-def selection(population, fitness, tournament_size):
+def selection(population, fitness, tournament_size, n_winners=round(population_n / tournament_n)):
+    if n_winners % 2 != 0:
+        n_winners += 1
     winners = []
     fitness_winners = []
+    deleted_index = []
     i = 0
-    while i < len(population):
-        size = tournament_size if i + tournament_size < len(population) else len(population)
+    while i < len(population) and n_winners > len(winners):
+        size = tournament_size if i + tournament_size + 1 < len(population) else len(population) - i
         competitors = fitness[i:i + size]
         index_winner = min(range(len(competitors)), key=competitors.__getitem__)
         winners.append(population[index_winner + i])
         fitness_winners.append(fitness[index_winner + i])
+        deleted_index.insert(0, index_winner + i)
         i += size
+        if i == len(population):
+            i = 0
+            for j in deleted_index:
+                del population[j]
+                del fitness[j]
+            deleted_index = []
     return winners, fitness_winners
 
 
 # Cross individuals to get next generation
 def cross(winner_population):
+    parents = winner_population.copy()
     new_generation = []
-    individual_n = 0
-    while (individual_n < int(len(winner_population) / 2)):
-        father = random.choice(winner_population)
-        mother = random.choice(winner_population)
-        if father != mother:
-            common_edges = list(set(father) & set(mother))
-            if common_edges != []:
-                winner = random.choice(common_edges)
-                father_idx = father.index(winner)
-                mother_idx = mother.index(winner)
-                son_1 = father[0:father_idx] + mother[mother_idx:]
-                son_2 = mother[0:mother_idx] + father[father_idx:]
-                new_generation.append(son_1)
-                new_generation.append(son_2)
-            individual_n += 1
+    while (len(parents) > 0):
+        father_pos = random.choice(range(len(parents)))
+        father = parents[father_pos]
+        del parents[father_pos]
+        mother_pos = random.choice(range(len(parents)))
+        mother = parents[mother_pos]
+        del parents[mother_pos]
+        common_edges = list(set(father) & set(mother))
+        if common_edges != []:
+            edge = random.choice(common_edges)
+            father_idx = father.index(edge)
+            mother_idx = mother.index(edge)
+            son_1 = father[0:father_idx] + mother[mother_idx:]
+            son_2 = mother[0:mother_idx] + father[father_idx:]
+            new_generation.append(son_1)
+            new_generation.append(son_2)
     return new_generation
 
 
@@ -270,7 +281,7 @@ def print_solution(population, fitness, iteration):
     print('****************************************')
     print('Sum of all edges(optimal): ' + str(threshold))
     if fitness[0] != math.inf:
-        print("Best solution: " + str(population[0]))
+        # print("Best solution: " + str(population[0]))
         print('Fitness: ' + str(fitness[0]))
     # there is no factible individual
     else:
