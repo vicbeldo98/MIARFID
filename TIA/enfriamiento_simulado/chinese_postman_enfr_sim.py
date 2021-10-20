@@ -47,10 +47,10 @@ def condicion_parada():
         return False
 
 
-def crear_vecinos(s_actual, n_vecinos=5):
+def crear_vecinos(s_actual, n_vecinos=5, n_max=100):
     vecinos = []
-
-    while(len(vecinos) < n_vecinos):
+    n_intentos = 0
+    while(len(vecinos) < n_vecinos and n_intentos <= n_max):
         # Crear soluciones heuristicas de todas las posiciones
         connections = degree.copy()
         pos = random.choice(range(len(s_actual)))
@@ -84,14 +84,18 @@ def crear_vecinos(s_actual, n_vecinos=5):
             non_visited_streets = non_visited_streets.difference([most_connected])
 
         if factible(individual):
+            n_intentos = 0
             vecinos.append(individual)
+        else:
+            n_intentos += 1
 
     return vecinos
 
 
-def crear_vecinos_random(s_actual, n_vecinos=1):
+def crear_vecinos_random(s_actual, n_vecinos=1, n_max=100):
     vecinos = []
-    while(len(vecinos) < n_vecinos):
+    n_intentos = 0
+    while(len(vecinos) < n_vecinos and n_intentos <= n_max):
         # Crear soluciones greedys de todas las posiciones
         pos = random.choice(range(len(s_actual)))
         individual = s_actual[:pos + 1]
@@ -109,8 +113,10 @@ def crear_vecinos_random(s_actual, n_vecinos=1):
                 next = random.choice(next_street_posib)
             individual.append(next)
         if factible(individual):
+            n_intentos = 0
             vecinos.append(individual)
         else:
+            n_intentos += 1
             vecino = crear_vecinos(individual, n_vecinos=1)[0]
             vecinos.append(vecino)
     return vecinos

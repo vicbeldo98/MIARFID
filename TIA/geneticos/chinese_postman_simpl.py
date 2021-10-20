@@ -22,7 +22,7 @@ def jsonKeys2int(x):
     return x
 
 
-with open('graphs/418_edges.json', 'r') as r:
+with open('418_sample.json', 'r') as r:
     aux = dict(json.load(r))
     edges = jsonKeys2int(aux)
 
@@ -51,32 +51,15 @@ streets = list(edges.keys())
 
 # Parameter definition
 population_n = 500
-tournament_n = 2
+tournament_n = 400
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 500
+max_iterations = 1
 p_mutation = 0.05
 min_length_sol = len(streets)
 max_length_sol = 2 * min_length_sol
 
 # Create initial population
 population = []
-
-
-def create_pseudorandom_population():
-    for i in range(population_n):
-        k = random.randint(min_length_sol, max_length_sol)
-        initial_node = random.choice(initial_streets)
-        individual = [initial_node]
-        ind_len = 1
-        available_perm = streets[1:]
-        while ind_len < k:
-            n_elem = k - ind_len if ind_len + len(available_perm) > k else len(available_perm)
-            individual.extend(random.sample(available_perm, n_elem))
-            ind_len += n_elem
-            available_perm = list(edges.keys())
-            available_perm.remove(individual[-1])
-        population.append(individual)
-    return population
 
 
 def create_heuristics_population():
@@ -181,7 +164,7 @@ def correct_path(individual):
 
 
 # Select parent individuals: by tournament
-def selection(population, fitness, tournament_size, n_winners=round(population_n / tournament_n)):
+def selection(population, fitness, tournament_size, n_winners=round(population_n / 2)):
     if n_winners % 2 != 0:
         n_winners += 1
     winners = []
@@ -197,11 +180,13 @@ def selection(population, fitness, tournament_size, n_winners=round(population_n
         deleted_index.insert(0, index_winner + i)
         i += size
         if i == len(population):
+            print('restarting')
             i = 0
             for j in deleted_index:
                 del population[j]
                 del fitness[j]
             deleted_index = []
+    print(len(winners))
     return winners, fitness_winners
 
 
