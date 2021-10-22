@@ -3,6 +3,8 @@ import math
 from itertools import groupby
 import json
 import time
+import argparse
+
 
 '''
 Implementation of the Chinese postman problem with genetic algorithms
@@ -49,12 +51,21 @@ degree = {k: len(v) for k, v in adjacency.items()}
 
 streets = list(edges.keys())
 
+# User arguments
+parser = argparse.ArgumentParser(description='Process parameters')
+parser.add_argument('--population', type=int, default=100)
+parser.add_argument('--tournament', type=int, default=2)
+parser.add_argument('--max_iterations', type=int, default=100)
+parser.add_argument('--p_mutation', type=float, default=0.05)
+parser.add_argument('--population_type', type=str, default='heuristics')
+args = parser.parse_known_args()[0]
+
 # Parameter definition
-population_n = 500
-tournament_n = 400
+population_n = args.population
+tournament_n = args.tournament
 threshold = sum([i[2] for i in edges.values()])
-max_iterations = 1
-p_mutation = 0.05
+max_iterations = args.max_iterations
+p_mutation = args.p_mutation
 min_length_sol = len(streets)
 max_length_sol = 2 * min_length_sol
 
@@ -180,13 +191,11 @@ def selection(population, fitness, tournament_size, n_winners=round(population_n
         deleted_index.insert(0, index_winner + i)
         i += size
         if i == len(population):
-            print('restarting')
             i = 0
             for j in deleted_index:
                 del population[j]
                 del fitness[j]
             deleted_index = []
-    print(len(winners))
     return winners, fitness_winners
 
 
@@ -288,15 +297,16 @@ def print_solution(population, fitness, iteration):
 start = time.time()
 
 # CREATING INITIAL POPULATION
-population = create_heuristics_population()
+if(args.population_type == 'random'):
+    population = create_factible_population()
+else:
+    population = create_heuristics_population()
 
 fitness = evaluate(population)
 
 #  MAIN BUCLE OF THE GENETIC ALGORITHM
 iteration = 0
 while not stop_condition(fitness, threshold, iteration, max_iterations):
-    if iteration % 100 == 0:
-        print('ITERARION: ' + str(iteration))
     winners, fitness_winners = selection(population, fitness, tournament_n)
     new_generation = cross(winners)
     mutate(new_generation)
