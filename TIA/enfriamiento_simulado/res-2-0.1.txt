@@ -1,0 +1,18 @@
+Initial solution fitness: 315948
+Optimal solution: 203714
+ITERATION 0
+ITERATION 100
+ITERATION 200
+ITERATION 300
+Initial solution fitness: 315948
+Optimal solution: 203714
+ITERATION 0
+ITERATION 100
+ITERATION 200
+ITERATION 300
+Initial solution fitness: 315948
+Optimal solution: 203714
+ITERATION 0
+ITERATION 100
+ITERATION 200
+ITERATION 300
