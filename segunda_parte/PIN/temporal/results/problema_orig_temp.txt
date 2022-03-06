@@ -1,0 +1,87 @@
+OPTIC
+
+; Plan found with metric 101.007
+; Theoretical reachable cost 101.008
+; States evaluated so far: 303
+; States pruned based on pre-heuristic cost lower bound: 0
+; Time 4.52
+0.000: (take c2 p5 c3 m2 g2 n3 n2)  [8.000]
+8.001: (leave-in-conveyor c2 ct2 m2 g2)  [20.000]
+8.002: (leave-ordinary-container c2 p5 c3 m2 g2 n2 n3)  [12.000]
+20.003: (take c8 p4 c4 m2 g2 n2 n1)  [12.000]
+28.002: (transport-conveyor c2 ct2 m2 g2)  [5.000]
+33.003: (take-from-conveyor c2 ct2 m1 g1)  [20.000]
+49.004: (leave-ordinary-container c8 p6 c6 m2 g2 n1 n2)  [16.000]
+53.004: (leave-ordinary-container c2 p2 c10 m1 g1 n2 n3)  [12.000]
+65.005: (take c2 p5 c10 m2 g2 n3 n2)  [8.000]
+65.005: (take c2 p2 c3 m1 g1 n3 n2)  [8.000]
+73.006: (leave-ordinary-container c2 p4 c4 m2 g2 n1 n2)  [16.000]
+73.006: (leave-ordinary-container c2 p3 c11 m1 g1 n1 n2)  [16.000]
+89.007: (take c2 p3 c4 m1 g1 n2 n1)  [12.000]
+
+LPG
+
+-n 1
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C4 M2 G2 N2 N1) [D:12.0000; C:0.1000]
+ 12.0000: (LEAVE-ORDINARY-CONTAINER C8 P6 C6 M2 G2 N1 N2) [D:16.0000; C:0.1000]
+ 28.0000: (TAKE C4 P4 P4 M2 G2 N1 N0) [D:16.0000; C:0.1000]
+ 44.0000: (LEAVE-IN-CONVEYOR C4 CT2 M2 G2) [D:20.0000; C:0.1000]
+ 64.0000: (TRANSPORT-CONVEYOR C4 CT2 M2 G2) [D:5.0000; C:0.1000]
+ 64.0000: (TAKE C2 P5 C3 M2 G2 N3 N2) [D:8.0000; C:0.1000]
+ 69.0000: (TAKE-FROM-CONVEYOR C4 CT2 M1 G1) [D:20.0000; C:0.1000]
+ 72.0000: (LEAVE-ORDINARY-CONTAINER C2 P4 P4 M2 G2 N0 N1) [D:20.0000; C:0.1000]
+ 89.0000: (LEAVE-GREEN-CONTAINER C4 P1 C7 M1 G1 N2 N3) [D:12.0000; C:0.1000]
+ 92.0000: (TAKE C3 P5 C5 M2 G2 N2 N1) [D:12.0000; C:0.1000]
+ 104.0000: (LEAVE-IN-CONVEYOR C3 CT2 M2 G2) [D:20.0000; C:0.1000]
+ 124.0000: (TRANSPORT-CONVEYOR C3 CT2 M2 G2) [D:5.0000; C:0.1000]
+ 129.0000: (TAKE-FROM-CONVEYOR C3 CT2 M1 G1) [D:20.0000; C:0.1000]
+ 149.0000: (LEAVE-GREEN-CONTAINER C3 P1 C4 M1 G1 N3 N4) [D:8.0000; C:0.1000]
+
+
+Solution number: 1
+Total time:      9.12
+Search time:     8.56
+Actions:         14
+Execution cost:  1.40
+Duration:        157.000
+Plan quality:    157.000
+
+-n 3
+
+0.0003:   (TAKE C8 P4 C4 M2 G2 N2 N1) [12.0000]
+12.0005:   (LEAVE-ORDINARY-CONTAINER C8 P6 C6 M2 G2 N1 N2) [16.0000]
+28.0007:   (TAKE C2 P5 C3 M2 G2 N3 N2) [8.0000]
+36.0010:   (LEAVE-ORDINARY-CONTAINER C2 P6 C8 M2 G2 N2 N3) [12.0000]
+48.0013:   (TAKE C4 P4 P4 M2 G2 N1 N0) [16.0000]
+64.0015:   (LEAVE-IN-CONVEYOR C4 CT2 M2 G2) [20.0000]
+84.0017:   (TRANSPORT-CONVEYOR C4 CT2 M2 G2) [5.0000]
+89.0020:   (TAKE-FROM-CONVEYOR C4 CT2 M1 G1) [20.0000]
+109.0023:   (LEAVE-GREEN-CONTAINER C4 P1 C7 M1 G1 N2 N3) [12.0000]
+84.0025:   (TAKE C3 P5 C5 M2 G2 N2 N1) [12.0000]
+96.0027:   (LEAVE-IN-CONVEYOR C3 CT2 M2 G2) [20.0000]
+116.0030:   (TRANSPORT-CONVEYOR C3 CT2 M2 G2) [5.0000]
+121.0033:   (TAKE-FROM-CONVEYOR C3 CT2 M1 G1) [20.0000]
+141.0035:   (LEAVE-GREEN-CONTAINER C3 P1 C4 M1 G1 N3 N4) [8.0000]
+
+Solution number: 2
+Total time:      22.18
+Search time:     21.60
+Actions:         14
+Execution cost:  1.40
+Duration:        149.000
+Plan quality:    149.000
+
+-n 5
+
+
+Solution number: 2
+Total time:      2.26
+Search time:     1.66
+Actions:         14
+Execution cost:  1.40
+Duration:        149.000
+Plan quality:    149.000
+

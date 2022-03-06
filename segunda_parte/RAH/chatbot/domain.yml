@@ -1,0 +1,147 @@
+version: '3.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- saludar
+- borrar_contacto
+- dar_info
+- registrar_contacto
+- programar
+- charla:
+    use_entities: []
+- afirmar
+- negar
+- detener
+- gracias
+- reto_bot
+- obtener_info
+- obtener_todos_contactos
+entities:
+- email
+- nick
+- phone-number
+- time
+slots:
+  evento:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: añadir_evento_form
+        requested_slot: evento
+  alarma:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: time
+  nick:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: nick
+      intent:
+      - registrar_contacto
+      - dar_info
+  email_propio:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: email
+      conditions:
+      - active_loop: añadir_evento_form
+        requested_slot: email_propio
+  email_amigo:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: email
+      conditions:
+      - active_loop: añadir_contacto_form
+        requested_slot: email_amigo
+  phone-number:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: phone-number
+  nick_contacto:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: nick
+      intent:
+      - borrar_contacto
+      - dar_info
+responses:
+  utter_ask_evento:
+  - text: ¿Cuál es el nombre del evento?
+  utter_ask_alarma:
+  - text: ¿Para cuándo quieres programar la alarma de este evento?
+  utter_ask_nick:
+  - text: ¿Cómo guardo a este contacto?
+  utter_ask_email_amigo:
+  - text: ¿Email del contacto?
+  utter_ask_email_propio:
+  - text: ¿Cuál es tu email?
+  utter_ask_phone-number:
+  - text: ¿Teléfono móvil?
+  utter_ask_nick_contacto:
+  - text: ¿Qué contacto te gustaría borrar?
+  utter_ask_continuar:
+  - text: ¿Quieres continuar?
+  utter_submit:
+  - text: ¡Listo!
+  utter_valores_slots:
+  - text: |
+      Programo una alarma con las siguientes características:
+       - Evento: {evento}
+       - Alarma: {alarma}
+  utter_denada:
+  - text: De nada 😊
+  utter_charla:
+  - text: Charla
+  utter_default:
+  - text: Lo siento, no pude entender eso, por favor intenta con otra entrada
+  utter_saludar:
+  - text: |-
+      ¡Hola! Soy un asistente para la organización. Puedes programar recordatorios y manejar contactos.
+      ¿Cómo puedo ayudarte?
+  utter_soybot:
+  - text: Soy un bot, hecho en Rasa
+  utter_restart:
+  - text: Reiniciando
+  utter_wrong_alarma:
+  - text: La fecha especificada ya ha pasado, por favor, intentalo de nuevo
+  utter_error_alarma:
+  - text: No puedo distinguir la fecha, por favor, intentalo de nuevo
+
+actions:
+- action_borrar_contacto
+- action_dar_info
+- action_guardar_contacto
+- programar_alarma
+- reset
+- utter_saludar
+- validate_añadir_evento_form
+- action_obtener_todos_contactos
+forms:
+  añadir_evento_form:
+    required_slots:
+    - evento
+    - email_propio
+    - alarma
+  añadir_contacto_form:
+    required_slots:
+    - nick
+    - email_amigo
+    - phone-number
+  borrar_contacto_form:
+    required_slots:
+    - nick_contacto

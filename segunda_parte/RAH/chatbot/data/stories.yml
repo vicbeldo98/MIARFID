@@ -1,0 +1,196 @@
+version: "3.0"
+
+stories:
+
+## detenerse pero continuar
+- story: detenerse pero continuar evento
+  steps:
+  - intent: programar
+  - action: añadir_evento_form
+  - active_loop: añadir_evento_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: afirmar
+  - action: añadir_evento_form
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_valores_slots
+  - action: programar_alarma
+  - action: reset
+
+
+## detenerse por completo
+- story: detenerse por completo evento
+  steps:
+  - intent: programar
+  - action: añadir_evento_form
+  - active_loop: añadir_evento_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: negar
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: reset
+
+
+## detenerse pero continuar
+- story: detenerse pero continuar contacto
+  steps:
+  - intent: registrar_contacto
+  - action: añadir_contacto_form
+  - active_loop: añadir_contacto_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: afirmar
+  - action: añadir_contacto_form
+  - active_loop: null
+  - action: action_guardar_contacto
+  - action: reset
+
+## detenerse por completo
+- story: detenerse por completo contacto
+  steps:
+  - intent: registrar_contacto
+  - action: añadir_contacto_form
+  - active_loop: añadir_contacto_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: negar
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: reset
+
+## detenerse pero continuar
+- story: detenerse pero continuar borrar contacto
+  steps:
+  - intent: borrar_contacto
+  - action: borrar_contacto_form
+  - active_loop: borrar_contacto_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: afirmar
+  - action: borrar_contacto_form
+  - active_loop: null
+  - action: action_borrar_contacto
+  - action: reset
+
+## detenerse por completo
+- story: detenerse por completo borrar contacto
+  steps:
+  - intent: borrar_contacto
+  - action: borrar_contacto_form
+  - active_loop: borrar_contacto_form
+  - intent: detener
+  - action: utter_ask_continuar
+  - intent: negar
+  - action: action_deactivate_loop
+  - active_loop: null
+  - action: reset
+
+- story: interactive_story_1
+  steps:
+  - intent: saludar
+  - action: utter_saludar
+  - intent: registrar_contacto
+  - action: añadir_contacto_form
+  - active_loop: añadir_contacto_form
+  - slot_was_set:
+    - requested_slot: nick
+  - slot_was_set:
+    - nick: Carlos
+  - slot_was_set:
+    - nick_contacto: Carlos
+  - slot_was_set:
+    - requested_slot: email_amigo
+  - slot_was_set:
+    - email_amigo: carlos@gmail.com
+  - slot_was_set:
+    - requested_slot: phone-number
+  - slot_was_set:
+    - phone-number: '635968321'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_guardar_contacto
+  - action: reset
+  - slot_was_set:
+    - evento: null
+  - slot_was_set:
+    - alarma: null
+  - slot_was_set:
+    - nick: null
+  - slot_was_set:
+    - email_propio: null
+  - slot_was_set:
+    - email_amigo: null
+  - slot_was_set:
+    - phone-number: null
+  - slot_was_set:
+    - nick_contacto: null
+  - intent: borrar_contacto
+    entities:
+    - nick: Sara
+  - slot_was_set:
+    - nick_contacto: Sara
+  - action: borrar_contacto_form
+  - active_loop: borrar_contacto_form
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_borrar_contacto
+  - action: reset
+  - slot_was_set:
+    - evento: null
+  - slot_was_set:
+    - alarma: null
+  - slot_was_set:
+    - nick: null
+  - slot_was_set:
+    - email_propio: null
+  - slot_was_set:
+    - email_amigo: null
+  - slot_was_set:
+    - phone-number: null
+  - slot_was_set:
+    - nick_contacto: null
+
+- story: interactive_story_2
+  steps:
+  - intent: saludar
+  - action: utter_saludar
+  - intent: registrar_contacto
+  - action: añadir_contacto_form
+  - active_loop: añadir_contacto_form
+  - slot_was_set:
+    - requested_slot: nick
+  - slot_was_set:
+    - nick: Carllos
+  - slot_was_set:
+    - nick_contacto: Carllos
+  - slot_was_set:
+    - requested_slot: email_amigo
+  - slot_was_set:
+    - email_amigo: carlos@gmail.com
+  - slot_was_set:
+    - requested_slot: phone-number
+  - slot_was_set:
+    - phone-number: '654253515'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_guardar_contacto
+  - action: reset
+  - slot_was_set:
+    - evento: null
+  - slot_was_set:
+    - alarma: null
+  - slot_was_set:
+    - nick: null
+  - slot_was_set:
+    - email_propio: null
+  - slot_was_set:
+    - email_amigo: null
+  - slot_was_set:
+    - phone-number: null
+  - slot_was_set:
+    - nick_contacto: null

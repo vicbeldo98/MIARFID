@@ -1,0 +1,1176 @@
+PROBLEMA 3
+
+
+FF
+
+step    0: TAKE C8 P4 C6 M2 G2 N2 N1
+        1: TAKE C3 P1 C1 M1 G1 N2 N1
+        2: LEAVE-IN-CONVEYOR C3 CT1 M1 G1
+        3: LEAVE-IN-CONVEYOR C8 CT2 M2 G2
+        4: TAKE-FROM-CONVEYOR C8 CT2 M1 G1
+        5: TAKE C7 P3 C5 M2 G2 N2 N1
+        6: LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2
+        7: LEAVE-IN-CONVEYOR C7 CT2 M2 G2
+        8: TAKE C5 P3 P3 M2 G2 N1 N0
+        9: TAKE-FROM-CONVEYOR C7 CT2 M1 G1
+       10: LEAVE-ORDINARY-CONTAINER C7 P2 C4 M1 G1 N2 N3
+       11: LEAVE-IN-CONVEYOR C5 CT2 M2 G2
+       12: TAKE-FROM-CONVEYOR C5 CT2 M1 G1
+       13: LEAVE-GREEN-CONTAINER C5 P2 C7 M1 G1 N3 N4
+     
+
+time spent:    0.00 seconds instantiating 3104 easy, 0 hard action templates
+               0.00 seconds reachability analysis, yielding 224 facts and 3104 actions
+               0.00 seconds creating final representation with 224 relevant facts, 0 relevant fluents
+               0.00 seconds computing LNF
+               0.00 seconds building connectivity graph
+               0.02 seconds searching, evaluating 80 states, to a max depth of 4
+               0.02 seconds total time
+
+OPTIC
+
+Number of literals: 224
+Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+No semaphore facts found, returning
+No analytic limits found, not considering limit effects of goal-only operators
+Initial heuristic = 12.000, admissible cost estimate 0.000
+b (10.000 | 0.000)b (9.000 | 0.001)b (8.000 | 0.001)b (7.000 | 0.003)b (5.000 | 0.005)b (4.000 | 0.006)b (3.000 | 0.007)b (1.000 | 0.008)(G)
+; No metric specified - using makespan
+
+; Plan found with metric 0.009
+; States evaluated so far: 47
+; States pruned based on pre-heuristic cost lower bound: 0
+; Time 0.16
+0.000: (take c7 p3 c5 m2 g2 n2 n1)  [0.001]
+0.000: (take c3 p1 c1 m1 g1 n2 n1)  [0.001]
+0.001: (leave-ordinary-container c7 p4 c8 m2 g2 n2 n3)  [0.001]
+0.001: (leave-in-conveyor c3 ct1 m1 g1)  [0.001]
+0.002: (take c1 p1 p1 m1 g1 n1 n0)  [0.001]
+0.002: (take c5 p3 p3 m2 g2 n1 n0)  [0.001]
+0.003: (leave-green-container c1 p2 c4 m1 g1 n2 n3)  [0.001]
+0.003: (leave-in-conveyor c5 ct2 m2 g2)  [0.001]
+0.004: (take-from-conveyor c5 ct2 m1 g1)  [0.001]
+0.004: (take c7 p4 c8 m2 g2 n3 n2)  [0.001]
+0.005: (leave-green-container c5 p2 c1 m1 g1 n3 n4)  [0.001]
+0.005: (leave-in-conveyor c7 ct2 m2 g2)  [0.001]
+0.006: (take c8 p4 c6 m2 g2 n2 n1)  [0.001]
+0.006: (take-from-conveyor c7 ct2 m1 g1)  [0.001]
+0.007: (leave-in-conveyor c8 ct2 m2 g2)  [0.001]
+0.007: (leave-ordinary-container c7 p1 p1 m1 g1 n0 n1)  [0.001]
+0.008: (take-from-conveyor c8 ct2 m1 g1)  [0.001]
+0.009: (leave-green-container c8 p1 c7 m1 g1 n1 n2)  [0.001]
+
+LPG
+
+-n 1
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C7 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 10.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 11.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 13.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 14.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 15.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 16.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 17.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 18.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 19.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 20.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 21.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 22.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 23.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 24.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 25.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 26.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 27.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 28.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 29.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 30.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 31.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 32.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 33.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 34.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 35.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 36.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 37.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 38.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 39.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 40.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 41.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 42.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 43.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 44.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 45.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 46.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 47.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 48.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 49.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 50.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 51.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 52.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 53.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 54.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 55.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 56.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 57.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 58.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 59.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 60.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 61.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 62.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 63.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 64.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 65.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 66.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 67.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 68.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 69.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 70.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 71.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 72.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 73.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 74.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 75.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 76.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 77.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 78.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 79.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 80.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 81.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 82.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 83.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 84.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 85.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 86.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 87.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 88.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 89.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 90.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 91.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 92.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 93.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 94.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 95.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 96.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 97.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 98.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 99.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 100.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 101.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 102.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 103.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 104.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 105.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 106.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 107.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 108.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 109.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 110.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 111.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 112.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 113.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 114.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 115.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 116.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 117.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 118.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 119.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 120.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 121.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 122.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 123.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 124.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 125.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 126.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 127.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 128.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 129.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 130.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 131.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 132.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 133.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 134.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 135.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 136.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 137.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 138.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 139.0000: (LEAVE-GREEN-CONTAINER C8 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 140.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 141.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 142.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 142.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 143.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 143.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 144.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 145.0000: (LEAVE-GREEN-CONTAINER C8 P1 C5 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      39.40
+Search time:     39.28
+Actions:         152
+Execution cost:  152.00
+Duration:        146.000
+Plan quality:    152.000
+
+-n 2
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 P3 M2 G2 N0 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P1 C5 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      23.04
+Search time:     22.94
+Actions:         14
+Execution cost:  14.00
+Duration:        10.000
+Plan quality:    14.000 Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.. found solution of bad quality. Restart using stored plan
+......... found solution of bad quality. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+... found solution of bad quality. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+....... found solution of bad quality. Restart using stored plan
+........ found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      104.78
+Search time:     104.68
+Actions:         12
+Execution cost:  12.00
+Duration:        8.000
+Plan quality:    12.000
+
+
+-n 3
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 P3 M2 G2 N0 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P2 C3 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      0.16
+Search time:     0.04
+Actions:         14
+Execution cost:  14.00
+Duration:        10.000
+Plan quality:    14.000 Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using null plan
+............... search limit exceeded. Restart using stored plan
+.. found solution of bad quality. Restart using stored plan
+... found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      125.66
+Search time:     125.54
+Actions:         12
+Execution cost:  12.00
+Duration:        8.000
+Plan quality:    12.000 Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using null plan
+............... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.. found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P2 C8 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+
+
+Solution number: 3
+Total time:      282.70
+Search time:     282.58
+Actions:         11
+Execution cost:  11.00
+Duration:        9.000
+Plan quality:    11.000
+
+-n 4
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      83.62
+Search time:     83.56
+Actions:         12
+Execution cost:  12.00
+Duration:        8.000
+Plan quality:    12.000
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+....... found solution of bad quality. Restart using stored plan
+... found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+....... found solution of bad quality. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using stored plan
+.................. search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P2 C8 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      229.34
+Search time:     229.28
+Actions:         11
+Execution cost:  11.00
+Duration:        9.000
+Plan quality:    11.000
+
+-n 5
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 10.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 11.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 13.0000: (LEAVE-GREEN-CONTAINER C5 P1 C8 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      39.12
+Search time:     39.04
+Actions:         18
+Execution cost:  18.00
+Duration:        14.000
+Plan quality:    18.000 Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P1 C8 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      73.52
+Search time:     73.44
+Actions:         12
+Execution cost:  12.00
+Duration:        8.000
+Plan quality:    12.000 Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+... found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+... found solution of bad quality. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.. found solution of bad quality. Restart using stored plan
+.. found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+... found solution of bad quality. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P2 C8 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+
+
+Solution number: 3
+Total time:      193.40
+Search time:     193.32
+Actions:         11
+Execution cost:  11.00
+Duration:        9.000
+Plan quality:    11.000
+
+LPG -timesteps
+
+-n 1
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C7 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 10.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 11.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 13.0000: (LEAVE-GREEN-CONTAINER C5 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 13.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 14.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 15.0000: (LEAVE-GREEN-CONTAINER C8 P1 C5 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      148.10
+Search time:     148.00
+Actions:         22
+Execution cost:  22.00
+Duration:        16.000
+Plan quality:    16.000
+
+
+-n 2
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C4 P2 C2 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C4 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-GREEN-CONTAINER C8 P2 C2 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C5 P2 C8 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      3.22
+Search time:     3.12
+Actions:         13
+Execution cost:  13.00
+Duration:        9.000
+Plan quality:    9.000 Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using stored plan
+.................. search limit exceeded. Restart using null plan
+..................... search limit exceeded. Restart using stored plan
+........................ search limit exceeded. Restart using stored plan
+............................ search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+..... found solution of bad quality. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using stored plan
+.................. search limit exceeded. Restart using null plan
+..................... search limit exceeded. Restart using stored plan
+... found solution of bad quality. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+..................... search limit exceeded. Restart using stored plan
+........................ search limit exceeded. Restart using null plan
+............................ search limit exceeded. Restart using stored plan
+................................. search limit exceeded. Restart using stored plan
+...................................... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+..................... search limit exceeded. Restart using stored plan
+........................ search limit exceeded. Restart using null plan
+............................ search limit exceeded. Restart using stored plan
+................................. search limit exceeded. Restart using stored plan
+...................................... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.. found solution of bad quality. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using stored plan
+.................. search limit exceeded. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+..........
+
+Max time exceeded for LocalSearch
+
+
+
+Time: 3.120000
+
+
+
+Switching to Best-first Search: ( code from J. Hoffmann's package FF-v2.3 ) 
+
+advancing to distance :   10
+                           7
+                           6
+                           5
+                           4
+                           3
+                           2
+                           1
+                           0
+improving the parallelism of the plan
+
+Solution number: 2
+Total time:      1201.24
+Search time:     1201.14
+Actions:         11
+Execution cost:  11.00
+Duration:        9.000
+Plan quality:    9.000
+
+-n 3
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C4 P2 C2 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C4 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 10.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 11.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 13.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 14.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 15.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 16.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 17.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 18.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 19.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 20.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 21.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 22.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 23.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 24.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 25.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 26.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 27.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 28.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 29.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 30.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 31.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 32.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 33.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 34.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 35.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 36.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 37.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 38.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 39.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 40.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 41.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 42.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 43.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 44.0000: (TAKE-FROM-CONVEYOR C4 CT1 M2 G2) [D:1.0000; C:1.0000]
+ 44.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 45.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 45.0000: (LEAVE-ORDINARY-CONTAINER C7 P2 C2 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 46.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 47.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 48.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 49.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 50.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 51.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 52.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 53.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 54.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 55.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 56.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 57.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 58.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 59.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 60.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 61.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 62.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 63.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 64.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 65.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 66.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 67.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 68.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 69.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 70.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 71.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 72.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 73.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 74.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 75.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 76.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 77.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 78.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 79.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 80.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 81.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 82.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 83.0000: (LEAVE-ORDINARY-CONTAINER C4 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 84.0000: (TAKE C4 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 85.0000: (LEAVE-IN-CONVEYOR C4 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 86.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 86.0000: (TAKE-FROM-CONVEYOR C4 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 87.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 87.0000: (LEAVE-ORDINARY-CONTAINER C4 P2 C7 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 88.0000: (TAKE C6 P4 P4 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 88.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 89.0000: (LEAVE-IN-CONVEYOR C8 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 89.0000: (LEAVE-ORDINARY-CONTAINER C6 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 90.0000: (TAKE C6 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 91.0000: (LEAVE-ORDINARY-CONTAINER C6 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 92.0000: (TAKE C6 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 93.0000: (LEAVE-ORDINARY-CONTAINER C6 P4 P4 M2 G2 N0 N1) [D:1.0000; C:1.0000]
+ 94.0000: (TAKE-FROM-CONVEYOR C8 CT1 M2 G2) [D:1.0000; C:1.0000]
+ 95.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 96.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 97.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 98.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 99.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 100.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 101.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 102.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 103.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 104.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 105.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 106.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 107.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 108.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 109.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 110.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 111.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 112.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 113.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 114.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 115.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 116.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 117.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 118.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 119.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 120.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 121.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 122.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 123.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 124.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 125.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 126.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 127.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 128.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 129.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 130.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 131.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 132.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 133.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 134.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 135.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 136.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 137.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 138.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 139.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 140.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 141.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 142.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 143.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 144.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 145.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 146.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 147.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 148.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 149.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 150.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 151.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 152.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 153.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 154.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 155.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 156.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 157.0000: (LEAVE-GREEN-CONTAINER C8 P3 C5 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 158.0000: (TAKE C8 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 159.0000: (LEAVE-GREEN-CONTAINER C8 P4 C6 M2 G2 N1 N2) [D:1.0000; C:1.0000]
+ 160.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 161.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 162.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 162.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 163.0000: (LEAVE-GREEN-CONTAINER C5 P2 C4 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 163.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 164.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 165.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 166.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 167.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      435.42
+Search time:     435.28
+Actions:         178
+Execution cost:  178.00
+Duration:        168.000
+Plan quality:    168.000 Restart using null plan
+........... search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C7 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C5 P1 C8 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      442.54
+Search time:     442.40
+Actions:         14
+Execution cost:  14.00
+Duration:        10.000
+Plan quality:    10.000 Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using stored plan
+.... found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+............. search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using null plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+..................... search limit exceeded. Restart using stored plan
+........................ search limit exceeded. Restart using null plan
+............................ search limit exceeded. Restart using stored plan
+................................. search limit exceeded. Restart using stored plan
+.......... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+..................... search limit exceeded. Restart using stored plan
+......................
+
+Max time exceeded for LocalSearch
+
+
+
+Time: 442.399994
+
+
+
+Switching to Best-first Search: ( code from J. Hoffmann's package FF-v2.3 ) 
+
+advancing to distance :   10
+                           7
+                           6
+                           5
+                           4
+                           3
+                           2
+                           1
+                           0
+improving the parallelism of the plan
+
+Solution number: 3
+Total time:      1200.38
+Search time:     1200.24
+Actions:         11
+Execution cost:  11.00
+Duration:        9.000
+Plan quality:    9.000
+
+
+-n 4
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C7 P4 C8 M2 G2 N2 N3) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C7 P4 C8 M2 G2 N3 N2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C5 P1 C3 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 P3 M2 G2 N0 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 10.0000: (TAKE C5 P1 C3 M1 G1 N3 N2) [D:1.0000; C:1.0000]
+ 11.0000: (LEAVE-GREEN-CONTAINER C5 P2 C8 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 12.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+
+
+Solution number: 1
+Total time:      47.38
+Search time:     47.26
+Actions:         15
+Execution cost:  15.00
+Duration:        13.000
+Plan quality:    13.000 Restart using stored plan
+........... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+........... search limit exceeded. Restart using stored plan
+............. search limit exceeded. Restart using stored plan
+............... search limit exceeded. Restart using null plan
+.................. search limit exceeded. Restart using stored plan
+..................... search limit exceeded. Restart using stored plan
+........................ search limit exceeded. Restart using null plan
+............................ search limit exceeded. Restart using stored plan
+................................. search limit exceeded. Restart using stored plan
+...................................... search limit exceeded.
+
+Searching ('.' = every 50 search steps):
+... solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C4 P2 C2 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C4 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-ORDINARY-CONTAINER C7 P2 C2 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C5 P2 C7 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C4 CT1 M2 G2) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-IN-CONVEYOR C3 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 8.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 9.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 2
+Total time:      236.68
+Search time:     236.56
+Actions:         17
+Execution cost:  17.00
+Duration:        10.000
+Plan quality:    10.000 Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+........ found solution of bad quality. Restart using null plan
+........... search limit exceeded. Restart using stored plan
+.......... search limit exceeded. Restart using stored plan
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P3 C5 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 0.0000: (TAKE C3 P1 C1 M1 G1 N2 N1) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-IN-CONVEYOR C7 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 1.0000: (LEAVE-ORDINARY-CONTAINER C3 P2 C4 M1 G1 N2 N3) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE C5 P3 P3 M2 G2 N1 N0) [D:1.0000; C:1.0000]
+ 2.0000: (TAKE-FROM-CONVEYOR C7 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C5 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 3.0000: (LEAVE-IN-CONVEYOR C7 CT1 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE-FROM-CONVEYOR C5 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 4.0000: (TAKE C8 P4 C6 M2 G2 N2 N1) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-IN-CONVEYOR C8 CT2 M2 G2) [D:1.0000; C:1.0000]
+ 5.0000: (LEAVE-GREEN-CONTAINER C5 P2 C3 M1 G1 N3 N4) [D:1.0000; C:1.0000]
+ 6.0000: (TAKE-FROM-CONVEYOR C8 CT2 M1 G1) [D:1.0000; C:1.0000]
+ 7.0000: (LEAVE-GREEN-CONTAINER C8 P1 C1 M1 G1 N1 N2) [D:1.0000; C:1.0000]
+
+
+Solution number: 3
+Total time:      247.50
+Search time:     247.38
+Actions:         14
+Execution cost:  14.00
+Duration:        8.000
+Plan quality:    8.000

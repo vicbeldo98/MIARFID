@@ -1,0 +1,388 @@
+version: "3.0"
+nlu:
+- intent: saludar
+  examples: |
+    - Hola
+    - Oye
+    - Hola bot
+    - Hey bot
+    - Buenos días
+    - Hola de nuevo
+    - Hola amigos
+    - Hola señor
+    - ¡hola amigo!
+    - saludos
+    - Hola todos
+    - Hola hay alguien ahí
+    - hola robot
+    - hola
+    - oye
+    - hola hola
+    - hey hey
+    - Hola a todos
+    - ey
+    - ¿Hola?
+    - ¡Ey bot!
+    - Hola amigo
+- intent: programar
+  examples: |
+    - anotar tarea
+    - me gustaría apuntar un evento
+    - programar alarma para una tarea
+    - ¿puedo programar un compromiso?
+    - apuntar una fecha de entrega
+    - apuntar una fecha límite
+    - quisiera programar una tarea
+    - necesito apuntar una tarea
+    - programar alarma por favor
+    - me gustaría programar una alarma en dos horas
+    - me gustaría registrar una entrega para el lunes
+    - apuntar recordatorio fecha de entrega
+    - registrar tarea
+    - quiero programar una cita
+    - quiero programar un recordatorio
+    - quiero añadir un recordatorio
+    - apuntar un evento
+    - apuntar un evento para mañana a las 12.00h
+    - me gustaría poner una alarma para las 17.00h
+    - apuntar recordatorio el jueves
+    - programar tarea hoy a las seis
+    - mañana
+    - el viernes que viene a las 20.00h
+    - 24/01/2022 a las 17:00h
+    - este sábado
+    - quiero añadir un evento
+- intent: afirmar
+  examples: |
+    - sí, un quiero anotar una tarea.
+    - correcto
+    - Sip
+    - uh si
+    - vamos a hacerlo
+    - Si
+    - um si
+    - si por supuesto
+    - eso es correcto
+    - sí Sí
+    - Correcto
+    - sí
+    - si
+    - si claro
+    - si y no me importa
+    - exacto
+    - me encanta eso
+- intent: negar
+  examples: |
+    - No
+    - sin nueva selección
+    - no, gracias
+    - no gracias
+    - UH no
+    - claro que no
+    - Tiene algo más
+    - no, esto no me funciona
+- intent: gracias
+  examples: |
+    - um gracias adiós
+    - está bien, adiós, gracias
+    - está bien, gracias, adiós
+    - tú Molas
+    - y eso es todo gracias y adiós
+    - gracias y adiós
+    - perdón por mis errores gracias adiós
+    - gracias adiós
+    - gracias adios
+    - uh gracias adiós
+    - gracias adios gracias adios
+    - aliento gracias adios
+    - gracias
+    - OK gracias
+    - Gracias, adiós
+    - ah gracias adios
+    - aliento muchas gracias adios
+    - Gracias
+    - ininteligible gracias adios
+    - uh ok gracias adiós
+    - Gracias adios
+    - um ok gracias adiós
+- intent: charla
+  examples: |
+    - ¿Puedes compartir tu jefe conmigo?
+    - quiero conocer a tu dueño
+    - quiero saber la empresa que te diseñó
+    - quiero saber la empresa que te generó
+    - quiero conocer la empresa que te inventó
+    - quiero saber quien te inventó
+    - ¿Puedo preguntar quién te inventó?
+    - por favor dime la empresa que te creó
+    - por favor dime quien te creó
+    - cuéntame más sobre tus creadores
+    - cuéntame más sobre tus fundadores
+    - Ahoy amigo, ¿cómo estás?
+    - Estás bien
+    - estas teniendo un buen dia
+    - ¿Estas bien?
+    - estás bien
+    - ¿Te sientes bien?
+    - cómo van las cosas
+    - ¿cómo van las cosas contigo?
+    - ¿Cómo están las cosas?
+    - cómo estás
+    - como estas
+    - Cómo estás esta mañana
+    - como te sientes
+    - cómo estás hoy
+    - ¿Cómo estás?
+    - ¿Cómo está el clima hoy?
+    - ¿Como está el clima?
+    - ¿Qué tiempo hace en tu casa?
+    - ¿Hace buen tiempo?
+    - ¿Esta lloviendo?
+    - ¿Qué se siente ahí fuera?
+    - ¿Hace frío o calor?
+    - Hermoso día, ¿no?
+    - ¿Cuál es el pronóstico del tiempo?
+    - ¿Hace bastante viento afuera?
+- intent: detener
+  examples: |
+    - ok entonces no puedes ayudarme
+    - eso fue una mierda, no estás ayudando
+    - no puedes ayudarme
+    - no puedes ayudarme con lo que necesito
+    - supongo que no puedes ayudarme entonces
+    - ok, supongo que no puedes ayudarme
+    - eso no es lo que quiero
+    - ok, pero eso no me ayuda
+    - esto no conduce a nada
+    - esta conversación no es realmente útil
+    - no puedes ayudarme con lo que quiero
+    - creo que no puedes ayudarme
+    - hm no creo que puedas hacer lo que quiero
+    - detener
+    - espera vuelve
+    - tienes algo?
+    - ¿Y te llamas empresa de bots? pff
+    - ¿y eso es todo?
+    - ¿nada más?
+- intent: reto_bot
+  examples: |
+    - ¿Eres un bot?
+    - ¿Eres un humano?
+    - ¿Estoy hablando con un bot?
+    - ¿Estoy hablando con un humano?
+- intent: registrar_contacto
+  examples: |
+    - quiero registrar a una persona
+    - quiesiera guardar un contacto
+    - salvar el contacto de [Juan](nick)
+    - guardar número de [Sara](nick)
+    - guardar correo de [Carlos](nick)
+    - Registrar el número de [Marta](nick)
+    - Guardar contacto
+    - Quiero añadir una nueva persona
+    - quiero añadir un contacto
+    - me gustaría guardar a una persona
+    - me gustaría añadir un contacto
+    - por favor, guardame este contacto
+    - Añadir contacto [Patricia](nick)
+    - Guardar nuevo contacto
+    - Añadir nuevo contacto
+    - Añademe un nuevo contacto
+    - Añade un contacto
+    - Agregar a [Gloria](nick)
+    - Agregame un nuevo contacto
+    - Agrega a [Ana Maria](nick)
+    - Agregar nuevo contacto
+    - Por favor, agrega a [Barbas](nick) a mis contactos
+    - Pon en la lista de mis contactos [Emma](nick)
+    - Registra a [Manolita](nick)
+    - Añade el número de [Jordi](nick)
+    - Añadir la información de [Joel](nick)
+    - Agregar a [Bautista](nick)
+    - Añadir un contacto con nick [Aien](nick)
+    - ¿Puedes añadir a [Roger](nick)?
+    - ¿Podrías agregar a [Esteve](nick)?
+    - ¿Podrías registrar el contacto de [Alejandro](nick)?
+    - ¿Podrías añadir a [Alex](nick)?
+    - Agregar a [Pau](nick)?
+    - Registrar el contacto de [Tania](nick)
+    - Añadir la información de [Nacho](nick)
+    - Añadir información de [Mery](nick)?
+    - Puedes agregar la información de [Alba](nick)
+    - Puedes añadir a [Elisa](nick)
+    - Añade el contacto de [Maldo](nick)
+    - Agrega a [Patricia](nick)
+    - Registra a [Zeta](nick)
+    - Agrega el contacto de [Helena](nick)
+    - Añade a [Hugo Uni](nick)
+    - Añadir a [Pablo](nick)
+    - Podrías registrar a [Yang](nick)
+    - Añade el contacto de [Oberin](nick)
+    - Agrega a [Nora](nick)
+    - Añadir [Vera](nick)
+    - Registrar [Chloe](nick)
+    - Añadir [Marc](nick)
+    - Agregar la información de [Emma](nick)
+    - Añadir el contacto de [Ivan](nick)
+    - Agregar la información de contacto de [James](nick)
+    - Añadir a [Ernesto](nick)
+    - Registrame contacto de [Fanny](nick)
+    - quiero agregar un contacto
+- intent: dar_info
+  examples: |
+    - Ponle [Alberto](nick)
+    - Pon [Cassie](nick)
+    - Como [Will](nick)
+    - quiero ponerle [Carlos](nick)
+    - Pon [Matias](nick)
+    - quiero ponerlo como [Ángela](nick)
+    - El nick que quiero es [Sara](nick)
+    - Quiero guardarle como [Emilia](nick)
+    - [Claudia](nick)
+    - [Aria](nick)
+    - [Juan Carlos](nick)
+    - [Elias](nick)
+    - [Martín]
+    - [Julian](nick)
+    - [Enrique](nick)
+    - [Arlenis](nick)
+    - [Angel Uni](nick)
+    - [Luis MIARFID](nick)
+    - [Charlie VALO](nick)
+    - [Marte](nick)
+    - [Ines](nick)
+    - [Soledad](nick)
+    - [Chechu](nick)
+    - [Jose](nick)
+    - [Salva](nick)
+    - [Dani](nick)
+    - Ponle [Tim](nick)
+    - Guardarle como [Jose](nick)
+    - Guardar como [Carlos](nick)
+    - Como [Ana](nick)
+    - conservar como [Julio](nick)
+    - [Andrés](nick)
+    - Almacenar como [Alejandro](nick)
+    - Preservar como [Germán](nick)
+    - Quiero almacenarlo como [Adrián](nick)
+    - Me gustaría guardarlo como [Hunter](nick)
+    - [Julián Uni](nick)
+    - [Ángel Matemático](nick)
+    - Es [Luis](nick)
+    - [Julia](nick)
+    - [Carmen](nick)
+    - [Nahuel](nick)
+    - [lala](nick)
+    - [aamama](nick)
+    - El teléfono es 643256585
+    - Es 654123252
+    - Su móvil es 964453484
+    - El email es mimi@gmail.com
+    - Su email es jujo@hotmail.com
+    - lala@gmail.com
+    - es vicbeldo@inf.upv.es
+    - lalala@hotmail.es
+    - mumu@lala.com
+    - 666545895
+    - 635765134
+    - +34965412365
+    - [Carlos](nick)
+    - carlos@gmail.com
+    - 635968321
+    - Como [Carllos](nick)
+    - 654253515
+- intent: obtener_info
+  examples: |
+    - Dar info de [Zeta](nick)
+    - Dame el número de [Manolo](nick)
+    - Dame la información de [Viki](nick)
+    - Teléfono de contacto de [Sandra](nick)
+    - Correo de [mamá](nick)
+    - ¿Cuál es el número de teléfono de [Nicole](nick)?
+    - ¿Cuál es el correo electrónico de [Kevin](nick)?
+    - ¿Número de teléfono de [Luis](nick)?
+    - ¿Cuál es el correo electrónico de [Marcos](nick)?
+    - Información de [Mar](nick)?
+    - Consigue información de [Mar](nick)?
+    - Devolver información de [Juan](nick)
+    - Dame el número de teléfono de [Elena](nick)
+    - Dime el número de teléfono de [Marta](nick)
+    - Dime el correo electronico de [María](nick)
+    - Dime el email de [Leire](nick)
+    - Dime el gmail de [Judit](nick)
+    - Cuál es el número de [John](nick)?
+    - Cuál es el email de [Ayelen](nick)?
+    - Dime el correo y número de [Jose](nick)
+    - Me das el correo y número de [Martín](nick)
+    - Dame el correo y número de [Álvaro](nick)
+    - Dime la información de contacto de [Nico](nick)
+    - Me das el contacto de [Ferran](nick)
+    - Dame la información de contacto de [Joan](nick)
+    - Móvil de [Alberto](nick)
+    - email de [Paula](nick)
+    - ¿Cuál era el contacto de [Roberto](nick)?
+    - Dime el correo de [Panzer](nick)?
+    - Dame el móvil de [Montesolo](nick)
+    - Móvil de [Edurne](nick)
+    - Dame el móvil de [Carmen](nick)
+- intent: borrar_contacto
+  examples: |
+    - Elimina el número de [Maria](nick)
+    - Elimina la información de [Edurne](nick)
+    - Borrar el teléfono de contacto de [Lola](nick)
+    - Borrar a [Laura](nick)
+    - Suprimir contacto con nick [Angel](nick)
+    - ¿Puedes suprimir a [Carlos](nick)?
+    - ¿Podrías borrar a [Daniel](nick)?
+    - ¿Podrías eliminar el contacto de [Gloria](nick)?
+    - ¿Podrías olvidar a [Javier](nick)?
+    - Quitar a [Arturo](nick)?
+    - Quitar el contacto de [Blanca](nick)
+    - Suprimir la información de [Toni](nick)
+    - Anular información de [Mercé](nick)?
+    - Puedes suprimir la información de [Eva](nick)
+    - Puedes descartar a [Maria José](nick)
+    - Descarta el contacto de [Paqui](nick)
+    - Descarta a [Antonio](nick)
+    - Surprime el número de [Raul](nick)
+    - Cancela el contacto de [Iker](nick)
+    - Borra a [Alex Uni](nick)
+    - Elimina a [Hugo](nick)
+    - Podrías borrar a [Sergio](nick)
+    - Suprime el contacto de [Aaron](nick)
+    - Olvida a [Quique](nick)?
+    - Eliminar [Joan](nick)
+    - Borrar [Miguel](nick)
+    - Descartar [Raquel](nick)
+    - Descarta la información de contacto de [Alicia](nick)
+    - Borra el contacto de [Daniela](nick)
+    - Anula la información de contacto de [Javiera](nick)
+    - Cancela a [Rigoberta](nick)
+    - Eliminar contacto de [Alma](nick)
+    - Quiero borrar un contacto
+    - borrar un contacto
+    - me gustaría borrar un contacto
+    - eliminar contacto
+    - quiero eliminar un contacto
+    - me gustaría eliminar un contacto
+    - me gustaría quitar un contacto
+    - suprimir información de un contacto
+    - quisiera descartar un contacto
+    - quisiera borrar a un contacto
+    - quiero borrar a [Sara](nick)
+
+- intent: obtener_todos_contactos
+  examples: |
+    - Dame todos los contactos que tengo
+    - Obtener todos los contactos
+    - Devuelve todos los contactos
+    - Dame todos los nicks guardados
+    - ¿Podrías darme todos los contactos?
+    - ¿Podrías obtener todos mis contactos?
+    - ¿Podrías devolverme a todos mis contactos?
+    - ¿Podrías darme todos mis nicks guardados?
+    - Dame los nicks de mis contactos guardados
+    - Dame todos los nicks guardados
+    - Obtener los nicks de mis contactos guardados
+    - Devuelve todos los nicks guardados
+    - Obtén todos mis nicks guardados

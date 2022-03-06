@@ -1,0 +1,89 @@
+OPTIC
+
+Number of literals: 549
+Constructing lookup tables: [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Post filtering unreachable actions:  [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+No semaphore facts found, returning
+Seeing if metric is defined in terms of task vars or a minimal value of makespan
+- Yes it is
+Recognised a monotonic-change-induced limit on -1.000*<special>
+- Must be >=  the metric
+For limits: literal goal index 0, fact (available c1 m1), is static or a precondition
+For limits: literal goal index 1, fact (available c8 m1), is static or a precondition
+For limits: literal goal index 2, fact (available c12 m1), is static or a precondition
+All the ground actions in this problem are compression-safe
+Initial heuristic = 7.000, admissible cost estimate 65.005
+b (6.000 | 10.000)b (5.000 | 30.001)b (4.000 | 35.002)b (3.000 | 55.003)b (2.000 | 65.004)
+Resorting to best-first search
+Running WA* with W = 5.000, not restarting with goal states
+b (6.000 | 10.000)b (5.000 | 30.001)b (4.000 | 35.002)b (3.000 | 55.003)b (2.000 | 65.004)b (1.000 | 90.006)(G)
+; LP calculated the cost
+
+; Plan found with metric 100.007
+; Theoretical reachable cost 100.008
+; States evaluated so far: 53
+; States pruned based on pre-heuristic cost lower bound: 0
+; Time 0.66
+0.000: (take c12 p4 c9 m2 g2 n2 n1)  [10.000]
+10.001: (leave-in-conveyor c12 ct2 m2 g2)  [20.000]
+30.002: (transport-conveyor c12 ct2 m2 g2)  [5.000]
+35.003: (take-from-conveyor c12 ct2 m1 g1)  [20.000]
+55.004: (leave-green-container c12 p3 c6 m1 g1 n2 n3)  [10.000]
+65.005: (take c7 p1 c4 m1 g1 n3 n2)  [5.000]
+70.006: (leave-in-conveyor c7 ct1 m1 g1)  [20.000]
+90.007: (take c4 p1 c1 m1 g1 n2 n1)  [10.000]
+
+ * All goal deadlines now no later than 100.007
+b (1.000 | 65.004)(G)
+; LP calculated the cost
+
+; Plan found with metric 75.005
+; Theoretical reachable cost 75.006
+; States evaluated so far: 1340
+; States pruned based on pre-heuristic cost lower bound: 6
+; Time 15.46
+0.000: (take c12 p4 c9 m2 g2 n2 n1)  [10.000]
+0.000: (take c7 p1 c4 m1 g1 n3 n2)  [5.000]
+5.001: (leave-in-conveyor c7 ct1 m1 g1)  [20.000]
+10.001: (leave-in-conveyor c12 ct2 m2 g2)  [20.000]
+30.002: (transport-conveyor c12 ct2 m2 g2)  [5.000]
+35.003: (take-from-conveyor c12 ct2 m1 g1)  [20.000]
+55.004: (leave-green-container c12 p3 c6 m1 g1 n2 n3)  [10.000]
+65.005: (take c4 p1 c1 m1 g1 n2 n1)  [10.000]
+72.005: (transport-conveyor c7 ct1 m1 g1)  [3.000]
+
+ * All goal deadlines now no later than 75.005
+
+
+LPG
+
+-n 1
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (TAKE C7 P1 C4 M1 G1 N3 N2) [D:5.0000; C:0.1000]
+ 0.0000: (TAKE C12 P4 C9 M2 G2 N2 N1) [D:10.0000; C:0.1000]
+ 5.0000: (LEAVE-ORDINARY-CONTAINER C7 P3 C6 M1 G1 N2 N3) [D:10.0000; C:0.1000]
+ 10.0000: (LEAVE-IN-CONVEYOR C12 CT2 M2 G2) [D:20.0000; C:0.1000]
+ 15.0000: (TAKE C4 P1 C1 M1 G1 N2 N1) [D:10.0000; C:0.1000]
+ 25.0000: (LEAVE-IN-CONVEYOR C4 CT1 M1 G1) [D:20.0000; C:0.1000]
+ 30.0000: (TRANSPORT-CONVEYOR C12 CT2 M2 G2) [D:5.0000; C:0.1000]
+ 45.0000: (TAKE-FROM-CONVEYOR C12 CT2 M1 G1) [D:20.0000; C:0.1000]
+ 65.0000: (LEAVE-GREEN-CONTAINER C12 P1 C1 M1 G1 N1 N2) [D:15.0000; C:0.1000]
+
+
+Solution number: 1
+Total time:      0.76
+Search time:     0.18
+Actions:         9
+Execution cost:  0.90
+Duration:        80.000
+Plan quality:    80.000
+
+-n 3
+
+
+
+-n 5
+
+

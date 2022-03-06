@@ -1,0 +1,93 @@
+version: "3.0"
+rules:
+## saludar
+  - rule: Saludando
+    steps:
+      - intent: saludar
+      - action: utter_saludar
+
+## agradecer
+  - rule: agradecer
+    steps:
+      - intent: gracias
+      - action: utter_denada
+
+## reto bot
+  - rule: reto bot  
+    steps:
+      - intent: reto_bot
+      - action: utter_soybot
+
+## charlar
+  - rule: Charlar
+    steps:
+      - intent: charla
+      - action: utter_charla
+
+## activar form
+  - rule: activar evento form
+    steps:
+      - intent: programar
+      - action: añadir_evento_form
+      - active_loop: añadir_evento_form
+
+## activar form
+  - rule: activar person form
+    steps:
+      - intent: registrar_contacto
+      - action: añadir_contacto_form
+      - active_loop: añadir_contacto_form
+
+## Enviar form
+  - rule: Enviar evento form
+    condition:
+    - active_loop: añadir_evento_form
+    steps:
+      - action: añadir_evento_form
+      - active_loop: null
+      - action: utter_submit
+      - action: utter_valores_slots
+      - action: programar_alarma
+      - action: reset
+
+# Registrar contacto
+## Enviar form
+  - rule: Enviar contacto form
+    condition:
+    - active_loop: añadir_contacto_form
+    steps:
+      - action: añadir_contacto_form
+      - active_loop: null
+      - action: action_guardar_contacto
+      - action: reset
+
+# Obtener información
+  - rule: Obtener información sobre una contacto
+    steps:
+      - intent: obtener_info
+      - action: action_dar_info
+      - action: reset
+
+# Activar formulario borrar contacto
+  - rule: Activar formulario borrar contacto
+    steps:
+      - intent: borrar_contacto
+      - action: borrar_contacto_form
+      - active_loop: borrar_contacto_form
+
+## Activar acción de borrar contacto
+  - rule: Activar acción borrar contacto
+    condition:
+    - active_loop: borrar_contacto_form
+    steps:
+      - action: borrar_contacto_form
+      - active_loop: null
+      - action: action_borrar_contacto
+      - action: reset
+
+# Obtener información
+  - rule: Obtener información sobre contactos guardados
+    steps:
+      - intent: obtener_todos_contactos
+      - action: action_obtener_todos_contactos
+      - action: reset

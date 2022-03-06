@@ -1,0 +1,27 @@
+recipe: default.v1
+language: es
+
+pipeline:
+  - name: SpacyNLP
+    model: es_core_news_md
+  - name: SpacyTokenizer
+  - name: SpacyFeaturizer
+  - name: RegexFeaturizer
+  - name: DucklingEntityExtractor
+    url: http://localhost:8000
+    locale: "es_ES"
+    timezone: "Europe/Madrid"
+    dimensions:
+    - time
+    - email
+    - phone-number
+  - name: DIETClassifier
+    epochs: 100
+
+
+policies:
+  - name: RulePolicy
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
